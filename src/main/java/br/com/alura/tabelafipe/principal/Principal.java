@@ -24,7 +24,7 @@ public class Principal {
 	public void menu() {
 						
         System.out.println("O que quer buscar ? \n"
-        		         + " - carro \n"
+        		         + " - carros \n"
         		         + " - motos  \n"
         		         + " - caminhoes  \n");
         
