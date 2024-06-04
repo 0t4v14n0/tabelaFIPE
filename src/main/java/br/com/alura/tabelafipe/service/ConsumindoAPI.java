@@ -14,7 +14,7 @@ public class ConsumindoAPI {
         
         String endereco = "";
         
-        //                    https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/2362/anos/2001-1
+        //https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/2362/anos/2001-1
         
         if (marca != "") {
         	        	
@@ -29,7 +29,7 @@ public class ConsumindoAPI {
         		}
        		
         	}else {
-        		endereco = BASE_URL+veiculo+"/marcas/"+marca;
+        		endereco = BASE_URL+veiculo+"/marcas/"+marca+"/modelos/";
         		
         	}
         	
@@ -45,8 +45,6 @@ public class ConsumindoAPI {
                 .send(request, HttpResponse.BodyHandlers.ofString());   
                         
         String retorno = response.body();
-        
-        //System.out.println(retorno);
 
         return retorno;
         
