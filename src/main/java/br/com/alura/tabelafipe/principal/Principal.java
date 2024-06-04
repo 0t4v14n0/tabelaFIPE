@@ -70,7 +70,7 @@ public class Principal {
         System.out.println("\nModelos filtrados");
         modelosFiltrados.forEach(System.out::println);
         
-        //
+        //lista os precos e ano
         
         System.out.println("\n Informe o codigo do veiculo : ");
 
