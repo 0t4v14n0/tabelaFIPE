@@ -2,36 +2,39 @@ package br.com.alura.tabelafipe.service;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
 
 public class ConsumindoAPI {
 	
-	private static final String BASE_URL = "https://parallelum.com.br/fipe/api/v1/carros/marcas";
+	private static final String BASE_URL = "https://parallelum.com.br/fipe/api/v1/";
 	
-    public String busca(String nome,String temporada,String episodio) throws IOException, InterruptedException { 
-
-        String termoBuscaEncoded = URLEncoder.encode(nome, StandardCharsets.UTF_8);
+    public String busca(String veiculo, String marca, String modelo, String ano) throws IOException, InterruptedException { 
         
-        //inicia a variavel
         String endereco = "";
         
-        //muda a chamada da url de acordo com as informacoes passadas
-        if (temporada != "") {
+        //                    https://parallelum.com.br/fipe/api/v1/carros/marcas/59/modelos/2362/anos/2001-1
+        
+        if (marca != "") {
         	        	
-        	if(episodio != "") {
+        	if(modelo != "") {	
         		
-        		endereco = BASE_URL + termoBuscaEncoded +"&season="+temporada+"&episode="+episodio;
-        		
+        		if(ano != "") {
+        			
+        			endereco = BASE_URL+veiculo+"/marcas/"+marca+"/modelos/"+modelo+"/anos/"+ano;
+        		}else {
+        			
+            		endereco = BASE_URL+veiculo+"/marcas/"+marca+"/modelos/"+modelo+"/anos";
+        		}
+       		
         	}else {
-        		endereco = BASE_URL + termoBuscaEncoded +"&season="+temporada;
+        		endereco = BASE_URL+veiculo+"/marcas/"+marca;
+        		
         	}
         	
         }else {
-        	endereco = BASE_URL;
+        	endereco = BASE_URL+veiculo+"/marcas";
         }
 
         HttpClient client = HttpClient.newHttpClient();
